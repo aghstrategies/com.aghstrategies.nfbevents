@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/admin/settings/nfbevents</path>
+    <page_callback>CRM_Nfbevents_Form_Settings</page_callback>
+    <title>NFB Upcoming Event Settings</title>
+    <access_arguments>administer CiviCRM</access_arguments>
+  </item>
+</menu>
