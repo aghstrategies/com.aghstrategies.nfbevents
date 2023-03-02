@@ -13,7 +13,7 @@ use CRM_Nfbevents_ExtensionUtil as E;
  * @param CRM_Core_Form $form
  */
 function nfbevents_civicrm_postProcess($formName, $form) {
-  if ($formName === 'CRM_Event_Form_Registration_Confirm' && $form->_values['event']['id'] == 479) { //NFB 479, dev 7
+  if ($formName === 'CRM_Event_Form_Registration_Confirm' && $form->_values['event']['id'] == 572) { //NFB 572, dev 7
     $participantID = $form->_values['participant']['id'];
     if ($form->_values['params'][$participantID]['custom_906'][1] == 1) { // NFB 906, dev 11
       nfbevents_send_upcoming_mail((int) $participantID, 124); //NOPBC 124, dev 69
