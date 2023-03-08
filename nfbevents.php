@@ -13,16 +13,16 @@ use CRM_Nfbevents_ExtensionUtil as E;
  * @param CRM_Core_Form $form
  */
 function nfbevents_civicrm_postProcess($formName, $form) {
-  if ($formName === 'CRM_Event_Form_Registration_Confirm' && $form->_values['event']['id'] == 572) { //NFB 572, dev 7
+  if ($formName === 'CRM_Event_Form_Registration_Confirm' && $form->_values['event']['event_type_id'] == 1) { //Conference type
     $participantID = $form->_values['participant']['id'];
-    if ($form->_values['params'][$participantID]['custom_906'][1] == 1) { // NFB 906, dev 11
-      nfbevents_send_upcoming_mail((int) $participantID, 124); //NOPBC 124, dev 69
+    if ($form->_values['params'][$participantID]['custom_906'][1] == 1) {
+      nfbevents_send_upcoming_mail((int) $participantID, 124);
     }
-    if ($form->_values['params'][$participantID]['custom_907'][1] == 1) { //NFB 907, dev 12
-      nfbevents_send_upcoming_mail((int) $participantID, 122); // Career Fair 122, dev 70
+    if ($form->_values['params'][$participantID]['custom_907'][1] == 1) {
+      nfbevents_send_upcoming_mail((int) $participantID, 122);
     }
-    if ($form->_values['params'][$participantID]['custom_922'][1] == 1) { // NFB 922, dev 13
-      nfbevents_send_upcoming_mail((int) $participantID, 123); //NFB Camp 123, dev 71
+    if ($form->_values['params'][$participantID]['custom_922'][1] == 1) {
+      nfbevents_send_upcoming_mail((int) $participantID, 123);
     }
   }
 }
