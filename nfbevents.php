@@ -35,7 +35,7 @@ function nfbevents_civicrm_postProcess($formName, $form) {
 function nfbevents_send_upcoming_mail($participantID, $templateID) {
   $contact = nfbevents_get_contact_from_participant($participantID);
 
-  $templateResponse = Civi\Api4\MessageTemplate::get()
+  $templateResponse = Civi\Api4\MessageTemplate::get(FALSE)
     ->addWhere('id', '=', $templateID)
     ->execute();
 
@@ -74,14 +74,14 @@ function nfbevents_send_upcoming_mail($participantID, $templateID) {
  * @return array|FALSE Either the contact or FALSE if not found
  */
 function nfbevents_get_contact_from_participant(int $participantID) {
-  $participantResponse = Civi\Api4\Participant::get()
+  $participantResponse = Civi\Api4\Participant::get(FALSE)
     ->addWhere('id', '=', $participantID)
     ->execute();
 
   if (count($participantResponse)) {
-    $contactResponse = Civi\Api4\Contact::get()
+    $contactResponse = Civi\Api4\Contact::get(FALSE)
     ->addWhere('id', '=', $participantResponse[0]['contact_id'])
-    ->addChain('withemail', Civi\Api4\Email::get()
+    ->addChain('withemail', Civi\Api4\Email::get(FALSE)
       ->addWhere('contact_id', '=', '$id')
       ->addWhere('is_primary', '=', TRUE))
     ->execute();
