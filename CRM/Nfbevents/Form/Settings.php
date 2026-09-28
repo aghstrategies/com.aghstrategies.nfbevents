@@ -18,13 +18,13 @@ class CRM_Nfbevents_Form_Settings extends CRM_Core_Form {
       TRUE // is required
     )->setSelected(Civi::settings()->get('upcoming_event_message_template_id'));
 
-    $this->addButtons(array(
-      array(
+    $this->addButtons([
+      [
         'type' => 'submit',
         'name' => E::ts('Submit'),
         'isDefault' => TRUE,
-      ),
-    ));
+      ],
+    ]);
 
     $this->assign('value', Civi::settings()->get('upcoming_event_message_template_id'));
 
@@ -61,7 +61,7 @@ class CRM_Nfbevents_Form_Settings extends CRM_Core_Form {
     // auto-rendered in the loop -- such as "qfKey" and "buttons".  These
     // items don't have labels.  We'll identify renderable by filtering on
     // the 'label'.
-    $elementNames = array();
+    $elementNames = [];
     foreach ($this->_elements as $element) {
       /** @var HTML_QuickForm_Element $element */
       $label = $element->getLabel();
